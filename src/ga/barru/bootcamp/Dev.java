@@ -2,7 +2,9 @@ package ga.barru.bootcamp;
 
 import lombok.*;
 import java.util.Set;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -14,9 +16,19 @@ public class Dev {
     private Set<Modulo> conteudosInscritos = new LinkedHashSet<>();
     private Set<Modulo> conteudosConcluidos = new LinkedHashSet<>();
 
+
     public void inscreverBootcamp(Bootcamp bootcamp) {
-        this.conteudosInscritos.addAll(bootcamp.getModulos());
+
+        for (Curso curso : bootcamp.getCursos()) {
+            for (Modulo modulo : curso.getModulos()) {
+                this.conteudosInscritos.add(modulo);
+            }
+        }
         bootcamp.getDevsInscritos().add(this);
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public void progredir() {
@@ -29,6 +41,13 @@ public class Dev {
             System.out.println("Você não está matriculado em nenhum conteúdo!");
         }
 
+    }
+
+    public double calcularTotalXp() {
+        return this.conteudosConcluidos
+                .stream()
+                .mapToDouble(Modulo::calcularXp)
+                .sum();
     }
     @Override
     public boolean equals(Object o) {

@@ -8,7 +8,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 
-public class Mentoria extends Conteudo {
+public class Mentoria extends Curso {
     private LocalDate data;
 
     @Override

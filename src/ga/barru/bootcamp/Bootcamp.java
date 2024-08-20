@@ -17,7 +17,7 @@ public class Bootcamp {
     private final LocalDate dataInicial = LocalDate.now();
     private final LocalDate dataFinal = dataInicial.plusDays(45);
     private Set<Dev> devsInscritos = new HashSet<>();
-    private Set<Modulo> modulos = new LinkedHashSet<>();
+    private Set<Curso> cursos = new LinkedHashSet<>();
 
     @Override
     public boolean equals(Object o) {
@@ -29,11 +29,11 @@ public class Bootcamp {
             && this.descricao.equals(o.getDescricao())
             && this.dataInicial.equals(o.getDataInicial())
             && this.dataFinal.equals(o.getDataFinal())
-            && Objects.equals(modulos, o.modulos);
+            && Objects.equals(cursos, o.getCursos());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.nome, this.descricao, this.dataInicial, this.dataFinal, this.modulos);
+        return Objects.hash(this.nome, this.descricao, this.dataInicial, this.dataFinal, this.cursos);
     }
 }

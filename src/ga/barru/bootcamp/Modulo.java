@@ -12,5 +12,15 @@ public class Modulo extends Conteudo {
         return concluido ? XP_PADRAO * getCargaHoraria() : 0;
     }
 
+    @Override
+    public String toString() {
+        return "Modulo{" +
+                "titulo='" + getTitulo() + "\'" +
+                ", descricao='" + getDescricao() + "\'" +
+                ", cargaHoraria=" + getCargaHoraria() +
+                ", concluido=" + concluido +
+                "}\n";
+    }
+
 
 }
